@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c2b6d91041b21bf467e3893c759f9da71fecabe9
 # Java
 *.class
 bin/
@@ -8,3 +12,9 @@ bin/
 .project
 .settings/
 *.log
+<<<<<<< HEAD
+=======
+=======
+/bin/
+>>>>>>> a4b4e59 (Añadiendo usuaros, usuario y usuariosmanager -Oier)
+>>>>>>> c2b6d91041b21bf467e3893c759f9da71fecabe9
