@@ -3,12 +3,11 @@ package clases;
 import java.util.ArrayList;
 
 public class GestorBiblioteca {
-    // Aquí están los ArrayList privados, separados del Main
+    
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private ArrayList<Recurso> recursos = new ArrayList<>();
     private ArrayList<Prestamo> prestamos = new ArrayList<>();
 
-    // Este es el método que tu compañero modificará para leer el CSV
     public void cargarDatosIniciales() {
         usuarios.add(new Usuario("U1", "Telmo", "telmo@email.com"));
         usuarios.add(new Usuario("U2", "Ibai", "ibai@email.com"));
@@ -21,7 +20,6 @@ public class GestorBiblioteca {
         System.out.println("Datos cargados correctamente en memoria.\n");
     }
 
-    // --- LÓGICA DE PRÉSTAMOS Y DEVOLUCIONES ---
     public void prestarRecurso(String idUsuario, String idRecurso) throws Exception {
         Usuario u = buscarUsuarioPorId(idUsuario);
         Recurso r = buscarRecursoPorId(idRecurso);
@@ -50,7 +48,6 @@ public class GestorBiblioteca {
         throw new Exception("Error: No hay préstamos activos para este recurso.");
     }
 
-    // --- BÚSQUEDAS Y CONSULTAS OBLIGATORIAS ---
     public void listarEstadoRecursos() {
         System.out.println("\n-- DISPONIBLES --");
         for (Recurso r : recursos) { if (r.isDisponible()) System.out.println(r); }
@@ -86,7 +83,6 @@ public class GestorBiblioteca {
         }
     }
 
-    // --- DOS CONSULTAS ADICIONALES ---
     public void contarRecursosTotales() {
         System.out.println("\nTotal de recursos registrados: " + recursos.size());
     }
@@ -98,7 +94,6 @@ public class GestorBiblioteca {
         }
     }
 
-    // Métodos auxiliares de búsqueda interna
     private Usuario buscarUsuarioPorId(String id) {
         for (Usuario u : usuarios) { if (u.getId().equals(id)) return u; }
         return null;
