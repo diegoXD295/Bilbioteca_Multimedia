@@ -90,7 +90,7 @@ public class MenuRecursos {
             String titulo = scanner.nextLine();
 
             System.out.print("Introduce el Año de publicación: ");
-            int anio = Integer.parseInt(scanner.nextLine()); // Puede lanzar NumberFormatException
+            int año = Integer.parseInt(scanner.nextLine()); // Puede lanzar NumberFormatException
 
             // Todos los recursos nuevos nacen disponibles por defecto
             boolean disponible = true;
@@ -105,7 +105,7 @@ public class MenuRecursos {
                 System.out.print("Introduce la Editorial: ");
                 String editorial = scanner.nextLine();
 
-                Libro nuevoLibro = new Libro(id, titulo, anio, disponible, autor, paginas, editorial);
+                Libro nuevoLibro = new Libro(id, titulo, año, disponible, autor, paginas, editorial);
                 gestor.agregarRecurso(nuevoLibro);
                 
             } else if (tipo == 2) {
