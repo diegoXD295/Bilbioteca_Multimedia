@@ -206,7 +206,7 @@ try {
 
 //Busca al Usuario por ID (Si no existe devuelve salta ERROR),
 //pero si lo encuentra lo elimina del array
-    public  void eliminarUsuario(int id) {
+    public static void eliminarUsuario(int id) {
     	try {
         Usuario u = buscarPorId(id);
         if (u == null) {

@@ -13,7 +13,11 @@ public class Interfaz {
 		int select;
 		UsuarioManager.cargarUsuariosCsv(6);
 		UsuarioManager.ordenarPorId();
+		
+		
 		while(true) {
+			
+			
 			String nombre;
 			String apellido;
 			String email;
@@ -35,16 +39,20 @@ public class Interfaz {
 			
 			System.out.println("\n"+"\u001B[33m---- USUARIOS ----\n" + 
 					"\n1) Mostrar todos" +
-					"\n2) Crear" + 
-					"\n3) modificar" + 
-					"\n4) Salir\u001B[0m \n");
+					"\n2) Buscar (ID)"+ 
+					"\n3) Crear" + 
+					"\n4) Modificar" + 
+					"\n5) Eliminar"+ 
+					"\n6) Salir \u001B[0m \n");
 		
 		int usr = sc.nextInt();
+		sc.nextLine();
 		System.out.println();
 		
 						switch(usr) {
 						
 						case(1):
+							
 							
 							UsuarioManager.listarUsuarios();
 							
@@ -52,8 +60,20 @@ public class Interfaz {
 							
 						case(2):
 							
-							System.out.print("Nombre: ");
+							
+							System.out.println("Introduzca el ID del usuario: ");
+						
+						System.out.println(UsuarioManager.buscarPorId(sc.nextInt())+"\n"); 
+						
 						sc.nextLine();
+							
+							break;
+							
+						case(3):
+							
+							
+							System.out.print("Nombre: ");
+						
 							 nombre= sc.nextLine();
 							
 							System.out.print("Apellido: ");
@@ -64,23 +84,26 @@ public class Interfaz {
 							
 							System.out.print("Edad: ");
 							 edad= sc.nextInt();
-							
+							 sc.nextLine(); 
+							 
 							System.out.print("Sexo: ");
-							sc.nextLine();
+							
 							 sexo= sc.nextLine();
 							
 							Usuario newUser = new Usuario( Main.listaUsuarios.getLast().getId()+1, nombre, apellido, email, edad, sexo);
 							UsuarioManager.agregarUsuario(newUser);
 							System.out.println("\u001B[32m"+"Usuario creado correctamente con id: "+newUser.getId()+".☻\u001B[0m\n ");
 							
+							break;
 						
-						case(3):
+						case(4):
+							
 							
 							System.out.println("Inserte el ID del usuario a modificar: ");
 							int id = sc.nextInt();
+							sc.nextLine(); 
 							
 							System.out.print("Nombre: ");
-							sc.nextLine();
 								 nombre= sc.nextLine();
 								
 								System.out.print("Apellido: ");
@@ -91,6 +114,7 @@ public class Interfaz {
 								
 								System.out.print("Edad: ");
 								 edad= sc.nextInt();
+								 sc.nextLine(); 
 								
 								System.out.print("Sexo: ");
 								sc.nextLine();
@@ -99,6 +123,25 @@ public class Interfaz {
 							
 							UsuarioManager.modificarUsuario(id, nombre, apellido, email, edad, sexo);
 							
+							
+							break;
+							
+						case(5):
+							
+							
+							System.out.println("Introduzca el ID del usuario: ");
+						
+							UsuarioManager.eliminarUsuario(sc.nextInt()); 
+							
+							System.out.println("Usuario eliminado exitosamente. ☻");
+							
+							break;
+						
+						case(6):
+							
+							
+							guardarYSalir();
+						
 							
 							break;
 						
@@ -110,9 +153,8 @@ public class Interfaz {
 			break;
 		case (4):
 
-			UsuarioManager.guardarUsuariosCsv();
-			System.out.println("Que tenga buen dia... Adiós.");
-			System.exit(0);
+			guardarYSalir();
+			
 			break;
 
 		default:
@@ -126,5 +168,11 @@ public class Interfaz {
 			}
 		
 		}
+	}
+	
+	public static void guardarYSalir() {
+		UsuarioManager.guardarUsuariosCsv();
+		System.out.println("Que tenga buen dia... Adiós.");
+		System.exit(0);
 	}
 }
